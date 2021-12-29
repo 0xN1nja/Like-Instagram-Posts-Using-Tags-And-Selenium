@@ -5,7 +5,7 @@ Abhimanyu Sharma, https://github.com/N1nja0p
 ## Installation
 Clone Repository
 ```bash
-git clone https://github.com/N1nja0p/
+git clone https://github.com/N1nja0p/Like-Instagram-Posts-Using-Tags-And-Selenium.git
 ```
 Install Required Modules
 ```bash
@@ -22,4 +22,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Please make sure to update tests as appropriate.
 ## License
-[MIT]()
+[MIT](https://github.com/N1nja0p/Like-Instagram-Posts-Using-Tags-And-Selenium/blob/master/LICENCE.txt)
