@@ -6,7 +6,6 @@ try:
     from selenium.webdriver.common.keys import Keys
     from selenium.webdriver.chrome.options import Options
     from selenium.webdriver.support import expected_conditions as EC
-    import os
     from csv import DictReader
     import time
 except:
