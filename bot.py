@@ -11,6 +11,7 @@ try:
     import time
 except:
     print("Modules Not Installed. Run pip install -r requirements.txt To Continue")
+    exit()
 options = Options()
 options.add_argument("--start-maximized")
 
