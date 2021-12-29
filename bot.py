@@ -101,14 +101,18 @@ class Bot():
 
 
 if __name__ == '__main__':
-    with open("config.csv", "r") as f:
-        reader = DictReader(f)
-        for i in reader:
-            USERNAME = i.get("username")
-            PASSWORD = i.get("password")
-            TAG = i.get("tag")
-            COUNT = i.get("count")
-            CHROME_DRIVER_PATH = i.get("chrome_driver_path")
-        bot = Bot(USERNAME, PASSWORD, TAG, COUNT, CHROME_DRIVER_PATH)
-        bot.login()
-        bot.explore_tag()
+    try:
+        with open("config.csv", "r") as f:
+            reader = DictReader(f)
+            for i in reader:
+                USERNAME = i.get("username")
+                PASSWORD = i.get("password")
+                TAG = i.get("tag")
+                COUNT = i.get("count")
+                CHROME_DRIVER_PATH = i.get("chrome_driver_path")
+            bot = Bot(USERNAME, PASSWORD, TAG, COUNT, CHROME_DRIVER_PATH)
+            bot.login()
+            bot.explore_tag()
+    except:
+        print("Please Run config.py Before Running Bot")
+        exit()
