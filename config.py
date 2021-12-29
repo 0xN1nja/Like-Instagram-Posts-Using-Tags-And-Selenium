@@ -2,6 +2,31 @@ from csv import DictWriter
 import os
 import getpass
 
+WELCOME_MESSAGE = '''
+#    #    #   ####    #####    ##     ####   #####     ##    #    #
+#    ##   #  #          #     #  #   #    #  #    #   #  #   ##  ##
+#    # #  #   ####      #    #    #  #       #    #  #    #  # ## #
+#    #  # #       #     #    ######  #  ###  #####   ######  #    #
+#    #   ##  #    #     #    #    #  #    #  #   #   #    #  #    #
+#    #    #   ####      #    #    #   ####   #    #  #    #  #    #
+
+
+ #####    ####    ####    #####
+ #    #  #    #  #          #
+ #    #  #    #   ####      #
+ #####   #    #       #     #
+ #       #    #  #    #     #
+ #        ####    ####      #
+
+
+ #          #    #    #  ######  #####
+ #          #    #   #   #       #    #
+ #          #    ####    #####   #    #
+ #          #    #  #    #       #####
+ #          #    #   #   #       #   #
+ ######     #    #    #  ######  #    #
+'''
+print(WELCOME_MESSAGE)
 username = input("Enter Your Instagram Username : ").lower()
 if len(username) > 0:
     USERNAME = username

@@ -14,6 +14,31 @@ except:
     exit()
 options = Options()
 options.add_argument("--start-maximized")
+WELCOME_MESSAGE = '''
+#    #    #   ####    #####    ##     ####   #####     ##    #    #
+#    ##   #  #          #     #  #   #    #  #    #   #  #   ##  ##
+#    # #  #   ####      #    #    #  #       #    #  #    #  # ## #
+#    #  # #       #     #    ######  #  ###  #####   ######  #    #
+#    #   ##  #    #     #    #    #  #    #  #   #   #    #  #    #
+#    #    #   ####      #    #    #   ####   #    #  #    #  #    #
+
+
+ #####    ####    ####    #####
+ #    #  #    #  #          #
+ #    #  #    #   ####      #
+ #####   #    #       #     #
+ #       #    #  #    #     #
+ #        ####    ####      #
+
+
+ #          #    #    #  ######  #####
+ #          #    #   #   #       #    #
+ #          #    ####    #####   #    #
+ #          #    #  #    #       #####
+ #          #    #   #   #       #   #
+ ######     #    #    #  ######  #    #
+'''
+print(WELCOME_MESSAGE)
 
 
 class Bot():
@@ -47,8 +72,6 @@ class Bot():
         time.sleep(2)
         WebDriverWait(self.driver, 10000).until(EC.visibility_of_element_located(
             (By.XPATH, '/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button')))
-        WebDriverWait(self.driver, 10000).until(EC.visibility_of_element_located(
-            (By.XPATH, '/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button')))
         like_button = self.driver.find_element_by_xpath(
             '/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button')
         like_button.click()
@@ -57,22 +80,25 @@ class Bot():
         next_post_button = self.driver.find_element_by_xpath('/html/body/div[6]/div[1]/div/div/div/button')
         next_post_button.click()
         i = 0
-        while True:
-            WebDriverWait(self.driver, 1000).until(EC.visibility_of_element_located(
-                (By.XPATH, '/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button')))
-            like_button = self.driver.find_element_by_xpath(
-                '/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button')
-            like_button.click()
-            WebDriverWait(self.driver, 10000).until(
-                EC.visibility_of_element_located((By.XPATH, '/html/body/div[6]/div[1]/div/div/div[2]/button')))
-            next_post_button = self.driver.find_element_by_xpath('/html/body/div[6]/div[1]/div/div/div[2]/button')
-            next_post_button.click()
-            i += 1
-            print(f"Liked Another Post! Post URL : {self.driver.current_url} Like Count : {i}")
-            time.sleep(2)
-            if i == self.count:
-                self.driver.quit()
-                break
+        with open("log.txt", "a") as f:
+            while True:
+                WebDriverWait(self.driver, 1000).until(EC.visibility_of_element_located(
+                    (By.XPATH,
+                     '/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button')))
+                like_button = self.driver.find_element_by_xpath(
+                    '/html/body/div[6]/div[2]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button')
+                like_button.click()
+                WebDriverWait(self.driver, 10000).until(
+                    EC.visibility_of_element_located((By.XPATH, '/html/body/div[6]/div[1]/div/div/div[2]/button')))
+                next_post_button = self.driver.find_element_by_xpath('/html/body/div[6]/div[1]/div/div/div[2]/button')
+                next_post_button.click()
+                i += 1
+                print(f"Liked Another Post! Post URL : {self.driver.current_url} Like Count : {i}")
+                f.write(f"Liked Another Post! Post URL : {self.driver.current_url} Like Count : {i}" + "\n")
+                time.sleep(2)
+                if i == self.count:
+                    self.driver.quit()
+                    break
 
 
 if __name__ == '__main__':
