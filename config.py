@@ -1,3 +1,4 @@
+# Run This Script Before Running bot.py
 from csv import DictWriter
 import os
 import getpass
